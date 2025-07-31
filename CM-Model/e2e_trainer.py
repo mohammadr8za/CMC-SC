@@ -79,8 +79,8 @@ def main():
     cm_model  = MultiModalCorrectionModel.to(DEVICE)
     optimizer = AdamW(cm_model.parameters(), lr=LR)
 
-    train_tsv = '/home/eri/Documents/peyghan/ASR-EC/datasets/audio-dataset/en/whisper-outputs/training_annots/asr_output_train_WER0.2060_CER0.0861_filtered_long_data.tsv'
-    dev_tsv   = '/home/eri/Documents/peyghan/ASR-EC/datasets/audio-dataset/en/whisper-outputs/training_annots/asr_output_dev_WER0.2405_CER0.1050_filtered_long_data.tsv'
+    train_tsv = '[YOUR_INPUT_TRAIN_DATA]'
+    dev_tsv   = '[YOUR_INPUT_DEV_DATA]'
     
     train_ds  = CorrectionDataset(train_tsv=train_tsv, tokenizer=tokenizer, max_length=MAX_LEN)
     dev_ds  = CorrectionDataset(train_tsv=dev_tsv, tokenizer=tokenizer, max_length=MAX_LEN)
