@@ -94,7 +94,7 @@ class CorrectionDataset(Dataset):
 
 if __name__ == "__main__":
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-    sample_tsv = '/home/eri/Documents/peyghan/ASR-EC/datasets/audio-dataset/en/whisper-outputs/training_annots/asr_output_dev_WER0.2405_CER0.1050_filtered_long_data.tsv'
+    sample_tsv = '[YOUR_INPUT_TRAIN_DATA]' # Default is TSV
 
     dataset = CorrectionDataset(tsv_path=sample_tsv,
                                 tokenizer=tokenizer)
