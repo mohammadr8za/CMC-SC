@@ -152,7 +152,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Evaluate ASR TSV with BERT-token alignment, normalization, WER & CER"
     )
-    parser.add_argument("input_tsv", help="TSV with columns audio_name,target_text,transcription")
+    parser.add_argument("--input_tsv", help="TSV with columns audio_name,target_text,transcription")
     parser.add_argument("--output_dir", help="Directory to save output TSV", default=None)
     args = parser.parse_args()
 
