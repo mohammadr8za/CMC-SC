@@ -8,6 +8,7 @@
 
 Code for **CMC-SC: Cross-Modal Contextualized ASR Spelling Correction via BERT and WavLM Using a Soft-Fusion Framework** accepted at ICNLSP 2025.
 
+Models' checkpoints (Detection and Spelling Correction) will be added to this repository soon. 
 ---
 
 ## Repository Contents
