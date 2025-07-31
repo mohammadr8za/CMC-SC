@@ -31,7 +31,7 @@ class CorrectionDataset(Dataset):
       - orig_ids, target_ids for evaluation
     """
     def __init__(self, tsv_path, tokenizer, max_length=128,
-                 audio_root_path='/home/eri/Documents/peyghan/ASR-EC/datasets/audio-dataset/en/clips'):
+                 audio_root_path='[Audio_Clips_Root_Path]'):
         self.df = pd.read_csv(tsv_path, sep='\t', dtype=str).fillna("")
         self.tokenizer = tokenizer
         self.max_length = max_length
