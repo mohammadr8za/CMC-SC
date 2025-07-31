@@ -1,0 +1,101 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Dataset
+Common Voice Large
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Eval Results:
+Confusion Matrix:
+[[177934  15245]
+ [  9366  25872]]
+
+Classification Report:
+               precision    recall  f1-score   support
+
+  Correct (0)       0.95      0.92      0.94    193179
+Incorrect (1)       0.63      0.73      0.68     35238
+
+     accuracy                           0.89    228417
+    macro avg       0.79      0.83      0.81    228417
+ weighted avg       0.90      0.89      0.90    228417
+ 
+ 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Test Results:
+Confusion Matrix:
+[[158518  17264]
+ [ 10481  26645]]
+
+Classification Report:
+               precision    recall  f1-score   support
+
+  Correct (0)       0.94      0.90      0.92    175782
+Incorrect (1)       0.61      0.72      0.66     37126
+
+     accuracy                           0.87    212908
+    macro avg       0.77      0.81      0.79    212908
+ weighted avg       0.88      0.87      0.87    212908
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Model:
+
+class BertTokenClassifier_LSTM(nn.Module):
+    """
+    BERT + BiLSTM + 2-way token classifier head.
+    Outputs a pair of logits at each token position.
+    """
+    def __init__(self, hidden_size=768):
+        super().__init__()
+        # Load pretrained BERT (frozen)
+        self.bert = BertModel.from_pretrained('bert-base-uncased')
+        for parameter in self.bert.parameters():
+            parameter.requires_grad = False
+
+        # BiLSTM layer
+        self.bilstm = nn.LSTM(
+            input_size=2 * hidden_size,
+            hidden_size=hidden_size,  # Hidden size per direction
+            num_layers=1,
+            bidirectional=True,
+            batch_first=True
+        )
+        
+        # Classification head (2*hidden_size because bidirectional)
+        nn.Sequential(nn.Linear(hidden_size * 2, hidden_size), 
+                      nn.Linear(hidden_size, 2))
+        self.classifier = nn.Linear(hidden_size * 2, 2)
+
+    def forward(self, input_ids, attention_mask, token_type_ids=None):
+        # 1) Get BERT's contextual embeddings
+        outputs = self.bert(
+            input_ids=input_ids,
+            attention_mask=attention_mask,
+            token_type_ids=token_type_ids,
+            return_dict=True,
+            output_hidden_states=True 
+        )
+        sequence_output = outputs.last_hidden_state  # (B, T, H)
+        
+        # initial embeddings of words
+        orig_embeds = outputs.hidden_states[0] # token embeddings, positional embeddings, and segment embeddings
+
+        # input_embeds = self.bert.embeddings(
+        #     input_ids=input_ids,
+        #     token_type_ids=token_type_ids
+        # )  # (B, T, H)
+    
+        cat_sequence_ouput = torch.cat((sequence_output, orig_embeds), 2)
+
+        # 2) Process with BiLSTM
+        lstm_output, _ = self.bilstm(cat_sequence_ouput)  # (B, T, 2*H)
+        
+        # 3) Project to 2 logits per token
+        logits = self.classifier(lstm_output)  # (B, T, 2)
+        return logits
+    
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Hyper-Parameters
+NUM_EPOCHS = 30
+BATCH_SIZE = 128
+LR = 1e-5
+MAX_LEN = 128
+
+
+
