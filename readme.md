@@ -1,4 +1,4 @@
-# CMC-SC: Cross-Modal Contextualized ASR Spelling Correction
+# CMC-SC: Cross-Modal Contextualized ASR Spelling Correction via BERT and WavLM using a Soft Fusion Framework
 
 **ICNLSP 2025**
 
@@ -12,7 +12,7 @@ Code for **CMC-SC: Cross-Modal Contextualized ASR Spelling Correction via BERT a
 
 ## Repository Contents
 
-- `data/` - Scripts and instructions for downloading and preprocessing datasets.
+- `data/` - Common Voice (En).
 - `models/` - Pretrained model checkpoints.
 - `src/` - Source code for training, evaluation, and inference:
   - `train.py` - Model training script.
@@ -23,7 +23,7 @@ Code for **CMC-SC: Cross-Modal Contextualized ASR Spelling Correction via BERT a
 
 ## Requirements
 
-- Python 3.8 or higher
+- Python 3.10 or higher
 - PyTorch >=1.10
 - transformers
 - datasets
@@ -40,7 +40,7 @@ pip install -r requirements.txt
 
 ## Data Preparation
 
-1. Download the ASR transcripts and audio files following the instructions in `data/README.md`.
+1. Download the Common Voice (En) Dataset and follow the instructions in `data/README.md`.
 2. Run the preprocessing script:
    ```bash
 
