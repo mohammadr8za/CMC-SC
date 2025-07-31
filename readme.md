@@ -13,11 +13,10 @@ Models' checkpoints (Detection and Spelling Correction) will be added to this re
 
 ## Repository Contents
 
-- `data/` - Common Voice (En).
-- `models/` - Pretrained model checkpoints.
-- `src/` - Source code for training, evaluation, and inference:
-  - `train.py` - Model training script.
-- `requirements.txt` - Python dependencies.
+- `Requirements/` - required packages to run the code in this repository.
+- `Data-Processing/` - Source code for data pre-processing (to be used for both detection and CMC-SC modules.
+- `CM-Model/` - Source code for training, and evaluation of the CM Spelling Correction module
+- `Detection/` - Source code for training, and evaluation of the detection module.
 - `CITATION.cff` - Citation details for the paper.
 
 ---
@@ -25,11 +24,6 @@ Models' checkpoints (Detection and Spelling Correction) will be added to this re
 ## Requirements
 
 - Python 3.10 or higher
-- PyTorch >=1.10
-- transformers
-- datasets
-- soundfile
-- numpy
 
 Install dependencies:
 
@@ -49,7 +43,15 @@ pip install -r requirements.txt
 
 ---
 
-## Training
+## Detection
+
+Train the CMC-SC model:
+
+```bash
+
+```
+
+## CMC-SC
 
 Train the CMC-SC model:
 
