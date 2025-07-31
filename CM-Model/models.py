@@ -100,7 +100,7 @@ class MultiModalCorrectionModel(nn.Module):
     """
     def __init__(
         self,
-        detector_ckpt: str = '/home/eri/Documents/peyghan/ASR-EC/scripts/Detection/checkpoints_040308/best_model.pt',
+        detector_ckpt: str = '[Detection_Module_Pretrained_Checkpoint]',
         bert_model_name: str = 'bert-base-uncased',
         wav_model_ckpt: str = 'wavlm/checkpoint/WavLM-Base.pt',
         max_speech_len: int = 50,
