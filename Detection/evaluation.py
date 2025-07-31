@@ -125,7 +125,7 @@ if __name__ == "__main__":
     CHECKPOINT_DIR = 'checkpoints_040307'
 
     ckpt_path = os.path.join(CHECKPOINT_DIR, f'best_model.pt')
-    texts_test, labels_test = load_texts_and_labels("/home/eri/Documents/peyghan/ASR-EC/datasets/audio-dataset/en/whisper-outputs/filtered_asr_output_test_WER0.2852_CER0.1593.tsv")
+    texts_test, labels_test = load_texts_and_labels("Path_to_Test_Data") # a TSV file for test including ASR Transcripts and the detection labels
     
     test_dataset   = TokenDetectionDataset(texts_test,   labels_test,   max_length=MAX_LEN)
     model     = BertTokenClassifier_LSTM().to(DEVICE)
