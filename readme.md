@@ -63,41 +63,6 @@ python src/train.py \
   --output_dir models/CMC-SC
 ```
 
----
-
-## Evaluation
-
-Evaluate on test set:
-
-```bash
-python src/evaluate.py \
-  --model_dir models/CMC-SC \
-  --test_data data/processed/test.json \
-  --metrics_file results/metrics.json
-```
-
----
-
-## Inference
-
-Run inference on new audio:
-
-```bash
-python src/infer.py \
-  --model_dir models/CMC-SC \
-  --audio_file path/to/file.wav \
-  --output_file output/corrected.txt
-```
-
----
-
-## Example
-
-See `examples/` for sample input and expected output:
-
-```bash
-bash examples/run_example.sh
-```
 
 ---
 
