@@ -35,42 +35,38 @@ pip install -r requirements.txt
 
 ## Data Preparation
 
-1. Download the Common Voice (En) Dataset and follow the instructions in `data/README.md`.
-2. Run the preprocessing script:
-   ```bash
+1. Download the Common Voice (En) Dataset.
+2. Run the preprocessing (processor.ipynb) script in Data-Processing folder:
+   - infer the ASR data
+   - align transcripts and target text
+   - assing a list of 0 and 1 to each sample (1 means incorrect and 0 means correct)
+   - filter the corrupted data
+   - data is ready to be processed for both detection and CMC models
 
-   ```
-
----
 
 ## Detection
 
 Train the CMC-SC model:
 
-```bash
-
-```
-
+- Run trainer in the Detection fodler
+- It will create its checkpoints and training figures in the same directory
+- 
 ## CMC-SC
 
 Train the CMC-SC model:
 
-```bash
+- Run trainer in the CM-Model folder
+- **Make Sure to Select the Correct Model**
 
-```
 
 
----
 
 ## Citation
 
 If you use this code, please cite our paper:
 
-```bibtex
 
-```
-
----
+**Will be availavle soon (Late August 2025)**
 
 ## License
 
