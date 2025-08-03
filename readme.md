@@ -43,6 +43,7 @@ pip install -r requirements.txt
    - filter the corrupted data
    - data is ready to be processed for both detection and CMC models
 
+---
 
 ## Detection
 
@@ -50,7 +51,9 @@ Train the CMC-SC model:
 
 - Run trainer in the Detection fodler
 - It will create its checkpoints and training figures in the same directory
-- 
+
+
+---
 ## CMC-SC
 
 Train the CMC-SC model:
@@ -60,7 +63,7 @@ Train the CMC-SC model:
 
 
 
-
+---
 ## Citation
 
 If you use this code, please cite our paper:
